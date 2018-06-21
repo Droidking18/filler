@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/21 11:15:51 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/21 16:04:12 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/filler.h"
 #include <stdio.h>
 
-t_map		read_head_map(void)
+t_map		read_head_map(int fd)
 {
 	char	*line;
 	char	number[10];
@@ -24,7 +24,7 @@ t_map		read_head_map(void)
 
 	i = 8;
 	j = 0;
-	get_next_line(0, &line);
+	get_next_line(fd, &line);
 	while (ft_isdigit(line[i]) || line[i] == ' ')
 	{
 		number[j] = line[i];
@@ -36,28 +36,33 @@ t_map		read_head_map(void)
 		ret.y = ft_atoi(number + 3);
 	else
 		ret.y = ft_atoi(number + 2);
-	printf("X:<%d>, Y:<%d>", ret.x, ret.y);
+	printf("X:<%d>, Y:<%d>\n", ret.x, ret.y);
 	return (ret);
 }
 
-char		**read_map(void)
+char		**read_map(int fd)
 {
 	char		**ret;
 	int			i;
 	t_map		coords;
 
 	i = 0;
-	coords = read_head_map();
-	ret = (char **)malloc(sizeof(**ret) * coords.x + 1);
+	coords = read_head_map(fd);
+	ret = (char **)malloc(sizeof(char**) * coords.x + 1);
 	get_next_line(0, &ret[i]);
-	free(ret);
+	free(ret[i]);
 	while(i < coords.x)
 	{
-		get_next_line(0, &ret[i]);
+		get_next_line(fd, &ret[i]);
 		ret[i][ft_strlen(ret[i])] = 0;
-		printf("$$$%s$$$\n", ret[i]);
 		i++;
 	}
 	ret[i] = NULL;
+	i = 0;
+	while (ret[i])
+	{
+		ret[i] = ft_strsub(ret[i] ,4 ,coords.y);
+		i++;
+	}
 	return (ret);
 }

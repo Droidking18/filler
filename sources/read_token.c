@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/21 10:53:12 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/21 15:14:59 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/filler.h"
 #include <stdio.h>
 
-t_map		read_head_token(void)
+t_map		read_head_token(int fd)
 {
 	char	*line;
 	char	number[10];
@@ -24,7 +24,7 @@ t_map		read_head_token(void)
 
 	i = 6;
 	j = 0;
-	get_next_line(0, &line);
+	get_next_line(fd, &line);
 	while (ft_isdigit(line[i]) || line[i] == ' ')
 	{
 		number[j] = line[i];
@@ -36,24 +36,23 @@ t_map		read_head_token(void)
 		ret.y = ft_atoi(number + 3);
 	else
 		ret.y = ft_atoi(number + 2);
-	printf("XX%d, YY%d", ret.x, ret.y);
+	printf("XX%d, YY%d\n", ret.x, ret.y);
 	return (ret);
 }
 
-char		**read_token(void)
+char		**read_token(int fd)
 {
 	char		**ret;
 	int			i;
 	t_map		coords;
 
 	i = 0;
-	coords = read_head_token();
-	ret = (char **)malloc(sizeof(**ret) * coords.x + 1);
+	coords = read_head_token(fd);
+	ret = (char **)malloc(sizeof(char**) * coords.x + 1);
 	while(i < coords.x)
 	{
-		get_next_line(0, &ret[i]);
+		get_next_line(fd, &ret[i]);
 		ret[i][ft_strlen(ret[i])] = 0;
-		printf("$$$$$%s$$$$$\n", ret[i]);
 		i++;
 	}
 	ret[i] = NULL;
