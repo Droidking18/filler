@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/21 16:04:12 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/25 10:44:09 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/filler.h"
 #include <stdio.h>
 
-t_map		read_head_map(int fd)
+t_map		read_head_map()
 {
 	char	*line;
 	char	number[10];
@@ -24,7 +24,7 @@ t_map		read_head_map(int fd)
 
 	i = 8;
 	j = 0;
-	get_next_line(fd, &line);
+	get_next_line(0, &line);
 	while (ft_isdigit(line[i]) || line[i] == ' ')
 	{
 		number[j] = line[i];
@@ -40,20 +40,20 @@ t_map		read_head_map(int fd)
 	return (ret);
 }
 
-char		**read_map(int fd)
+char		**read_map()
 {
 	char		**ret;
 	int			i;
 	t_map		coords;
 
 	i = 0;
-	coords = read_head_map(fd);
+	coords = read_head_map();
 	ret = (char **)malloc(sizeof(char**) * coords.x + 1);
 	get_next_line(0, &ret[i]);
 	free(ret[i]);
 	while(i < coords.x)
 	{
-		get_next_line(fd, &ret[i]);
+		get_next_line(0, &ret[i]);
 		ret[i][ft_strlen(ret[i])] = 0;
 		i++;
 	}

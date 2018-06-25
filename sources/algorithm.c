@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/25 10:43:13 by dkaplan          ###   ########.fr       */
+/*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
+/*   Updated: 2018/06/22 11:49:53 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
-# include "../libft/libft.h"
+#include "../includes/filler.h"
 
-typedef struct	s_filler
+int		ft_is_piece(char c, char player)
 {
-	int		p1;
-	int		p2;
-	char	**map;
-	char	**token;
-	int		tok_x;
-	int		tok_y;
-	int		map_x;
-	int		map_y;
-}				t_filler;
+	return (c == player);
+}
 
-typedef struct	s_map
+int		star_check(char *str1, char *str2, char player)
 {
-	int		x;
-	int		y;
-}				t_map;
-char			**read_map(int fd);
-char			**read_token(int fd);
-int				read_piece(void);
+	int i;
+	int j;
 
-#endif
+	j = 0;
+	i = 0;
+	while (str1[i] && str2[i])
+	{
+		if (str1[i] == '*' && ft_is_piece(str2[i], player))
+			j++;
+		i++;
+	}
+	return (j);
+}

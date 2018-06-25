@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   read_piece.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/25 10:43:13 by dkaplan          ###   ########.fr       */
+/*   Created: 2018/06/25 10:39:28 by dkaplan           #+#    #+#             */
+/*   Updated: 2018/06/25 13:41:58 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
-# include "../libft/libft.h"
+#include "../libft/libft.h"
+#include "../includes/filler.h"
 
-typedef struct	s_filler
+int		read_piece(void)
 {
-	int		p1;
-	int		p2;
-	char	**map;
-	char	**token;
-	int		tok_x;
-	int		tok_y;
-	int		map_x;
-	int		map_y;
-}				t_filler;
+	char 	*str;
+	int		i;
 
-typedef struct	s_map
-{
-	int		x;
-	int		y;
-}				t_map;
-char			**read_map(int fd);
-char			**read_token(int fd);
-int				read_piece(void);
-
-#endif
+	get_next_line(0, &str);
+	i = (ft_strcmp(str, "$$$ exec p1 : [filler]") ? 0 : 1);
+	free(str);
+	return(i);
+}
