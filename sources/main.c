@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:18 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/22 11:54:10 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/28 13:55:09 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int		main(int ac, char **av)
 //	token = read_token(fd);
 //	free(token);
 //	free(map);
-	
-	ft_putnbr(12);
+	ft_putnbr(8);
 	ft_putchar(' ');
-	ft_putnbr(14);
+	ft_putnbr(2);
 	ft_putchar('\n');
 }

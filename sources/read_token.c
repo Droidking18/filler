@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/25 10:45:10 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/28 12:23:24 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_map		read_head_token()
 		ret.y = ft_atoi(number + 3);
 	else
 		ret.y = ft_atoi(number + 2);
-	printf("XX%d, YY%d\n", ret.x, ret.y);
+//	printf("XX%d, YY%d\n", ret.x, ret.y);
 	return (ret);
 }
 
