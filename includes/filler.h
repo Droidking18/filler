@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/28 13:36:03 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/28 15:29:16 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_map
 	int		y;
 }				t_map;
 char			**read_map(int fd);
-char			**read_token(int fd);
+char			**read_token();
 int				read_piece(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/28 12:23:13 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/28 17:17:02 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,36 @@ t_map		read_head_map()
 	return (ret);
 }
 
-char		**read_map()
+void    converter(char **map, int piece)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (map[i][j])
+    {
+        if (piece == 0 && (map[i][j] == 'O' || map[i][j] == 'o'))
+        {
+            map[i][j] = 'Y';
+            j++;
+        }
+        else if (piece == 1 && (map[i][j] == 'X' || map[i][j] == 'x'))
+        {
+            map[i][j] = 'Y';
+            j++;
+        }
+        else if (map[i][j])
+            j++;
+        if (!map[i][j])
+        {
+            j = 0;
+            i++;
+        }
+    }
+}
+
+char		**read_map(int piece)
 {
 	char		**ret;
 	int			i;
@@ -64,5 +93,6 @@ char		**read_map()
 		ret[i] = ft_strsub(ret[i] ,4 ,coords.y);
 		i++;
 	}
+    converter(ret, piece);
 	return (ret);
 }
