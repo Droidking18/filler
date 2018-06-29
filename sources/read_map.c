@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/28 17:17:02 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/06/29 14:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ t_map		read_head_map()
 		ret.y = ft_atoi(number + 3);
 	else
 		ret.y = ft_atoi(number + 2);
-//	printf("X:<%d>, Y:<%d>\n", ret.x, ret.y);
 	return (ret);
 }
 
-void    converter(char **map, int piece)
+void    converter(char **map, int piece, int x)
 {
     int i;
     int j;
@@ -49,23 +48,20 @@ void    converter(char **map, int piece)
     j = 0;
     while (map[i][j])
     {
-        if (piece == 0 && (map[i][j] == 'O' || map[i][j] == 'o'))
+        if ((piece == 0 && (map[i][j] == 'O' || map[i][j] == 'o')) 
+				|| (piece == 1 && (map[i][j] == 'X' || map[i][j] == 'x')))
         {
             map[i][j] = 'Y';
             j++;
         }
-        else if (piece == 1 && (map[i][j] == 'X' || map[i][j] == 'x'))
+		if (!map[i][j + 1])
         {
-            map[i][j] = 'Y';
-            j++;
-        }
-        else if (map[i][j])
-            j++;
-        if (!map[i][j])
-        {
-            j = 0;
+            j = -1;
             i++;
         }
+		if (i >= x)
+			break ;
+		j++;
     }
 }
 
@@ -91,8 +87,10 @@ char		**read_map(int piece)
 	while (ret[i])
 	{
 		ret[i] = ft_strsub(ret[i] ,4 ,coords.y);
+		ret[i][coords.y] = 0;
 		i++;
 	}
-    converter(ret, piece);
+	ret[coords.x] = NULL;
+    converter(ret, piece, coords.x);
 	return (ret);
 }
