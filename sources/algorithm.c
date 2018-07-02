@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/06/28 12:22:48 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/02 14:26:09 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,46 @@ int		ft_is_piece(char c, char player)
 	return (c == player);
 }
 
-int		star_check(char *str1, char *str2, char player)
+int		star_check(char **token, char **map, int x, int y)
 {
 	int i;
 	int j;
+	int k;
 
+	k = 0;
 	j = 0;
 	i = 0;
-	while (str1[i] && str2[i])
+	while (token[i][j] && map[i][j] && j <= x && i <= y)
 	{
-		if (str1[i] == '*' && ft_is_piece(str2[i], player))
-			j++;
-		i++;
+		if (token[i][j] == '*' && map[i][j] == 'Y')
+			k++;
+		if (j == x)
+		{
+			j = 0;
+			i++;
+		}
+		j++;
 	}
-	return (j);
+	return (k);
 }
+
+t_map	compare()
+{
+	int i;
+	int j;
+	char **map;
+	char **token;
+	t_map coords;
+
+	coords.x = 0;
+	coords.y = 0;
+	map = read_map();
+	token = read_token();
+	while (read_map())
+	{
+		if (star_check(token, map, coords.x, coords.y) == 1)
+			return (coords);
+		else
+			coords.y++;
+
+
