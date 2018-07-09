@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 10:39:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/09 15:12:05 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/09 16:44:28 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		read_piece(void)
 
 	get_next_line(0, &str);
 	i = (ft_strcmp(str, "$$$ exec p1 : [./filler]") ? 1 : 0);
-	free(str);
+	//§free(str);
 	dprintf(2, "%d\n", i);
 	return(i);
 }

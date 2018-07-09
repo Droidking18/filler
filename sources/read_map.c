@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/09 15:24:25 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/09 17:30:30 by dkaplan          ###   ########.fr       */
 /*   Updated: 2018/06/29 14:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -55,7 +55,6 @@ void    converter(char **map, int piece, int x)
 				|| (piece == 1 && (map[i][j] == 'X' || map[i][j] == 'x')))
         {
             map[i][j] = 'Y';
-            j++;
         }
 		if (!map[i][j + 1])
         {
@@ -78,7 +77,7 @@ t_map		read_map(int piece)
 	coords = read_head_map();
 	ret = (char **)malloc(sizeof(char**) * coords.w + 1);
 	get_next_line(0, &ret[i]);
-	free(ret[i]);
+	//free(ret[i]);
 	while(i < coords.w)
 	{
 		get_next_line(0, &ret[i]);
@@ -95,7 +94,12 @@ t_map		read_map(int piece)
 	}
 	ret[coords.w] = NULL;
     converter(ret, piece, coords.w);
+	coords.map = ret;
 	i = 0;
-	coords.map = ret; 
+	while (ret[i])
+	{
+		dprintf(2, "|||||||||||||||||||||||||%s\n", ret[i]);
+		i++;
+	}
 	return (coords);
 }
