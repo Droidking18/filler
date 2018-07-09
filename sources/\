@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/09 13:31:47 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/09 13:11:13 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ int		star_check(t_token *token, char **map, int x, int y)
 	i = 0;
 	while (token->token[i][j] && map[i + x][j + y] && j < token->w && i < token->h)
 	{
-		dprintf(2, "%di < , h%d", i, token->h);
-		dprintf(2, "%dj < , w%d", j, token->w);
-		dprintf(2, "%s", map[i]);
-		dprintf(2, "%s", token->token[i]);
 		dprintf(2, "grrr %c, %c\n", token->token[i][j], map[i + x][j + y]);
 		dprintf(2, "a %d %d\n", i, j);
 		if (token->token[i][j] == '*' && map[i + x][j + y] == 'Y')
