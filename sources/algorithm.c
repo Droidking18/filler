@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/09 13:31:47 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/09 15:52:52 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		star_check(t_token *token, char **map, int x, int y)
 	k = 0;
 	j = 0;
 	i = 0;
-	while (token->token[i][j] && map[i + x][j + y] && j < token->w && i < token->h)
+	while (/*token->token[i][j] && map[i + x][j + y] && */j < token->h && i < token->w)
 	{
 		dprintf(2, "%di < , h%d", i, token->h);
 		dprintf(2, "%dj < , w%d", j, token->w);
@@ -31,19 +31,22 @@ int		star_check(t_token *token, char **map, int x, int y)
 		dprintf(2, "grrr %c, %c\n", token->token[i][j], map[i + x][j + y]);
 		dprintf(2, "a %d %d\n", i, j);
 		if (token->token[i][j] == '*' && map[i + x][j + y] == 'Y')
+		{
+			dprintf(2, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 			k++;
-		if (j == token->w)
+		}
+		j++;
+		if (j == token->h)
 		{
 			j = 0;
 			i++;
 		}
-		j++;
 	}
 	dprintf(2, "????%d\n", k);
 	return (k);
 }
 
-void	compare()
+void	compare(int piece)
 {
 	int i;
 	int j;
@@ -51,7 +54,7 @@ void	compare()
 	t_token token;
 
 	dprintf(2, "we are reading the map\n");
-	map = read_map();
+	map = read_map(piece);
 	dprintf(2, "we are reading the token\n");
 	token = read_token();
 	dprintf(2, "awoo\n");
@@ -64,7 +67,9 @@ void	compare()
 			dprintf(2, "trying to do the sex at %d,%d\n", i, j);
 			if (star_check(&token, map.map, i, j) == 1)
 			{
-				dprintf(2, ">>>>>>>>>%d %d\n", map.w, map.h);
+				dprintf(1, "%d %d\n", i, j);
+				dprintf(2, "..................%d %d\n...................", i, j);
+				return ;
 			}
 			j++;
 		}

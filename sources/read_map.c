@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/09 12:58:13 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/09 15:24:25 by dkaplan          ###   ########.fr       */
 /*   Updated: 2018/06/29 14:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -26,7 +26,6 @@ t_map		read_head_map()
 	i = 8;
 	j = 0;
 	get_next_line(0, &line);
-	dprintf(2, "LINE:::::::::%s", line);
 	while (ft_isdigit(line[i]) || line[i] == ' ')
 	{
 		number[j] = line[i];
@@ -34,12 +33,10 @@ t_map		read_head_map()
 		j++;
 	}
 	ret.w = ft_atoi(number);
-	dprintf(2, "W><><<%d", ret.w);
 	if (ret.w > 9)
 		ret.h = ft_atoi(number + 3);
 	else
 		ret.h = ft_atoi(number + 2);
-	dprintf(2, "H><><><><%d", ret.w);
 	return (ret);
 }
 
@@ -84,9 +81,7 @@ t_map		read_map(int piece)
 	free(ret[i]);
 	while(i < coords.w)
 	{
-		dprintf(2, "LOOP>>");
 		get_next_line(0, &ret[i]);
-		dprintf(2, "%s", ret[i]);
 		ret[i][ft_strlen(ret[i])] = 0;
 		i++;
 	}
@@ -99,8 +94,8 @@ t_map		read_map(int piece)
 		i++;
 	}
 	ret[coords.w] = NULL;
-	dprintf(2, "done first loop");
     converter(ret, piece, coords.w);
+	i = 0;
 	coords.map = ret; 
 	return (coords);
 }

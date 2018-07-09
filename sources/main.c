@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:18 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/09 12:44:51 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/09 15:52:19 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,16 @@ int		main(int ac, char **av)
 //	token = read_token(fd);
 //	free(token);
 //	free(map);
-	read_piece();
+	
+	i =	read_piece();
+	while(1)
+	{
 	dprintf(2, "hello this is the main\n");
-	compare();
+	compare(i);
     dprintf(2, "<<<<<<<<<<<%d>>>>>>>>>\n", i);
-	ft_putnbr(8);
-	ft_putchar(' ');
-	ft_putnbr(2);
-	ft_putchar('\n');
+	}
+	//ft_putnbr(8);
+	//ft_putchar(' ');
+	//ft_putnbr(2);
+	//ft_putchar('\n');
 }
