@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/11 17:30:37 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/12 13:24:35 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 t_token		read_head_token()
 {
 	char	*line;
-	char	number[10];
 	int		i;
 	int		j;
 	t_token	ret;
@@ -25,17 +24,11 @@ t_token		read_head_token()
 	i = 6;
 	j = 0;
 	get_next_line(0, &line);
-	while (ft_isdigit(line[i]) || line[i] == ' ')
-	{
-		number[j] = line[i];
-		i++;
-		j++;
-	}
-	ret.h = ft_atoi(number);
+	ret.h = ft_atoi(line + 6);
 	if (ret.h > 9)
-		ret.w = ft_atoi(number + 3);
+		ret.w = ft_atoi(line + 9);
 	else
-		ret.w = ft_atoi(number + 2);
+		ret.w = ft_atoi(line + 8);
 	return (ret);
 }
 

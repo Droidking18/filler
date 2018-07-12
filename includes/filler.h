@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/11 17:20:45 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/12 12:33:02 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ typedef struct  s_token
 t_map			read_map();
 t_token			read_token();
 int				read_piece();
-int				compare();	
+void			compare();	
 
 #endif
