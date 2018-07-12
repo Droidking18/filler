@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/12 13:49:08 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/12 15:11:11 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		star_check(t_token *token, char **map, int x, int y)
 	k = 0;
 	j = 0;
 	i = 0;
-	dprintf(2, ">>>>%d", token->h + 1);
 	while (i < token->h)
 	{
 		j = 0;
@@ -35,6 +34,14 @@ int		star_check(t_token *token, char **map, int x, int y)
 		i++;
 	}
 	return (k);
+}
+
+void	ft_fuck_off(int i, int j)
+{
+	ft_putnbr(i);
+	ft_putchar(' ');
+	ft_putnbr(j);
+	ft_putchar('\n');
 }
 
 void	compare(int piece)
@@ -52,13 +59,9 @@ void	compare(int piece)
 		j = 0;
 		while (j <= (map.w - token.w))
 		{
-			write(2, "GGGG ", 5);
 			if (star_check(&token, map.map, i, j)  == 1)
 			{
-				ft_putnbr(i);
-				ft_putchar(' ');
-				ft_putnbr(j);
-				ft_putchar('\n');
+				ft_fuck_off(i, j);
 				return ;
 			}
 			j++;
@@ -66,5 +69,6 @@ void	compare(int piece)
 		i++;
 	}
 	free(map.map);
+	free(token.token);
 	return ;
 }

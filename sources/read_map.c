@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/12 13:10:31 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/12 15:29:53 by dkaplan          ###   ########.fr       */
 /*   Updated: 2018/06/29 14:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -18,21 +18,18 @@
 t_map		read_head_map()
 {
 	char	*line;
-	int		i;
-	int		j;
 	t_map	ret;
 
-	i = 8;
-	j = 0;
 	dprintf(2, "B4 GNL");
 	get_next_line(0, &line);
-	write(2, "Done read", 9);
+	write(2, "after GNL", 15);
 	ret.h = ft_atoi(line + 8);
-	if (ret.h > 9)
+	if (ret.h > 99)
+		ret.w = ft_atoi(line + 12);
+	else if (ret.h > 9)
 		ret.w = ft_atoi(line + 11);
 	else
 		ret.w = ft_atoi(line + 10);
-	//dprintf(2, ".......THIS IS LINE:           %s, with coords.h being %d, and .w being %d..........", line, ret.h, ret.w);
 	free(line);
 	return (ret);
 }
