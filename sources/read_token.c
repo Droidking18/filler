@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/09 16:44:41 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/11 17:30:37 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ t_token		read_head_token()
 		i++;
 		j++;
 	}
-	ret.w = ft_atoi(number);
-	if (ret.w > 9)
-		ret.h = ft_atoi(number + 3);
+	ret.h = ft_atoi(number);
+	if (ret.h > 9)
+		ret.w = ft_atoi(number + 3);
 	else
-		ret.h = ft_atoi(number + 2);
+		ret.w = ft_atoi(number + 2);
 	return (ret);
 }
 
@@ -47,8 +47,8 @@ t_token		read_token()
 
 	i = 0;
 	res = read_head_token();
-	ret = (char **)malloc(sizeof(char**) * res.w + 1);
-	while(i < res.w)
+	ret = (char **)malloc(sizeof(char**) * res.h + 1);
+	while(i < res.h)
 	{
 		get_next_line(0, &ret[i]);
 		ret[i][ft_strlen(ret[i])] = 0;
@@ -56,11 +56,6 @@ t_token		read_token()
 	}
 	ret[i] = NULL;
 	i = 0;
-	while (ret[i])
-	{
-		dprintf(2, "...................................|||||%s\n", ret[i]);
-		i++;
-	}
 	res.token = ret;	
 	return (res);
 }

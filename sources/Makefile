@@ -6,9 +6,9 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/11 14:58:26 by dkaplan           #+#    #+#              #
-#    Updated: 2018/07/11 14:59:00 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/07/11 15:58:41 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	gcc *.c ../libft/libft.a -o filler
+	gcc *.c ../libft/libft.a -o ../resources/filler
