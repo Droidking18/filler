@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/12 10:03:35 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/12 10:36:18 by dkaplan          ###   ########.fr       */
 /*   Updated: 2018/06/29 14:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -25,7 +25,11 @@ t_map		read_head_map()
 
 	i = 8;
 	j = 0;
+	dprintf(2, "B4 GNL");
 	get_next_line(0, &line);
+	write(2, "Done read", 9);
+	//read(0, line, 30);
+	//dprintf(2, "LINE:                           %s", line);
 	while (ft_isdigit(line[i]) || line[i] == ' ')
 	{
 		number[j] = line[i];
@@ -38,6 +42,7 @@ t_map		read_head_map()
 	else
 		ret.w = ft_atoi(number + 2);
 	dprintf(2, "................THIS IS LINE:           %s, with coords.h being %d, and .w being %d.............", line, ret.h, ret.w);
+	free(line);
 	return (ret);
 }
 

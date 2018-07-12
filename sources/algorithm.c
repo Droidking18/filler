@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/12 10:01:49 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/12 10:31:37 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,13 @@ int		compare(int piece)
 	t_token token;
 
 	dprintf(2, "we are reading the map\n");
-	map = read_map(piece); /// ok
-//	if (map.h == 2009809808)
-//		return(1);
+	map = read_map(piece);
+	dprintf(2, "we done the map\n");
 	dprintf(2, "we are reading the token\n");
-	token = read_token(); /// ok
+	token = read_token();
 	dprintf(2, "awoo\n");
 	i = 0;
-	while (i < map.h - token.h) ///// THERES A SEGFAULT IN THIS WHILE LOOP
+	while (i < map.h - token.h)
 	{
 		write(2, "no", 2);
 		j = 0;
