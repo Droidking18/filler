@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/12 15:29:53 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/13 10:32:22 by dkaplan          ###   ########.fr       */
 /*   Updated: 2018/06/29 14:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -19,10 +19,14 @@ t_map		read_head_map()
 {
 	char	*line;
 	t_map	ret;
+	int		read;
 
-	dprintf(2, "B4 GNL");
-	get_next_line(0, &line);
-	write(2, "after GNL", 15);
+	ret.geff = 0;
+	if (!(get_next_line(0, &line)))
+	{
+		ret.geff = 1;
+		return(ret);
+	}
 	ret.h = ft_atoi(line + 8);
 	if (ret.h > 99)
 		ret.w = ft_atoi(line + 12);
@@ -65,6 +69,8 @@ t_map		read_map(int piece)
 
 	i = 0;
 	coords = read_head_map();
+	if (coords.geff == 1)
+		return(coords);
 	ret = (char **)malloc(sizeof(char*) * coords.h + 1);
 	get_next_line(0, &ret[i]);
 	free(ret[i]);

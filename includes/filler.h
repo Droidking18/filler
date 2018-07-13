@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/12 15:10:35 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/13 10:33:15 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_map
 	int		w;
 	int		h;
 	char	**map;
+	int		geff;
 }				t_map;
 typedef struct  s_token
 {
@@ -41,6 +42,6 @@ typedef struct  s_token
 t_map			read_map();
 t_token			read_token();
 int				read_piece();
-void			compare();	
+int				compare();	
 
 #endif
