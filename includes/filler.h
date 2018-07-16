@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/13 10:33:15 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/16 16:47:21 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@
 
 typedef struct	s_filler
 {
-	int		p1;
-	int		p2;
-	char	**map;
-	char	**token;
-	int		tok_x;
-	int		tok_y;
-	int		map_x;
-	int		map_y;
+	int				w;
+	int				h;
+	int				rating;
+	struct s_filler	*next;
 }				t_filler;
-
 typedef struct	s_map
 {
 	int		w;
@@ -33,15 +28,22 @@ typedef struct	s_map
 	char	**map;
 	int		geff;
 }				t_map;
-typedef struct  s_token
+typedef struct	s_token
 {
 	int		w;
 	int		h;
 	char	**token;
 }				t_token;
+typedef struct	s_savespace
+{
+	int		j;
+	int		i;
+}				t_savespace;
 t_map			read_map();
 t_token			read_token();
 int				read_piece();
-int				compare();	
+int				compare();
+int				distance_calc(int ha, int wa, int hb, int wb);
+float				sqroot(int a, int b);
 
 #endif

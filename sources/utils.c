@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 14:25:18 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/16 14:52:08 by dkaplan          ###   ########.fr       */
+/*   Created: 2018/07/16 15:31:34 by dkaplan           #+#    #+#             */
+/*   Updated: 2018/07/16 16:55:43 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/filler.h"
-#include "../libft/libft.h"
 #include <stdio.h>
-#include <fcntl.h>
+#include "../includes/filler.h"
 
-int		main(int ac, char **av)
+int		distance_calc(int ha, int wa, int hb, int wb)
 {
-	int i;
-	int geff;
+	int x;
 
-	geff = 0;
-	i =	read_piece();
-	while (!geff)
-		geff = (compare(i));
+	dprintf(2, "<<<<<<<<<<%d, %d, %d, %d>>>>>>>>>>", ha, hb, wa, wb);
+	x = ((ha) * (hb) + (wa) * (wb));
+	return (sqroot((float)x / 2, x));
+}
+
+float		sqroot(int x,int n)
+{
+    float t;
+
+    t = ((x * x) + n)/(2 * x);
+    if(t == x)
+        return (t);
+    else
+        sqroot(t,n);
 }

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:36 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/13 10:32:22 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/16 15:51:28 by dkaplan          ###   ########.fr       */
 /*   Updated: 2018/06/29 14:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -19,7 +19,6 @@ t_map		read_head_map()
 {
 	char	*line;
 	t_map	ret;
-	int		read;
 
 	ret.geff = 0;
 	if (!(get_next_line(0, &line)))
