@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 15:31:34 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/16 16:55:43 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 12:26:09 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,41 @@
 
 int		distance_calc(int ha, int wa, int hb, int wb)
 {
-	int x;
-
-	dprintf(2, "<<<<<<<<<<%d, %d, %d, %d>>>>>>>>>>", ha, hb, wa, wb);
-	x = ((ha) * (hb) + (wa) * (wb));
-	return (sqroot((float)x / 2, x));
+	return ((((ha - hb) * (ha - hb)) + ((wa - wb) * (wa - wb))));
 }
 
-float		sqroot(int x,int n)
+void	print_optim(t_filler *moves)
 {
-    float t;
+	int rating;
+	int w;
+	int h;
 
-    t = ((x * x) + n)/(2 * x);
-    if(t == x)
-        return (t);
-    else
-        sqroot(t,n);
+
+	rating = 10000000;
+	h = moves->h;
+	w = moves->w;
+	//dprintf(2, "||||||||||w%d|||||||||", moves->w);
+	//dprintf(2, "||||||||||w%d|||||||||", moves->h);
+	//dprintf(2, "||||||||||w%d|||||||||", moves->rating);
+	while (moves)
+	{
+		if (rating > moves->rating)
+		{
+			write(2, "DING DONG DITCH", 15);
+			rating = moves->rating;
+			w = moves->w;
+			h = moves->h;
+		}
+		moves = moves->next;
+	}
+	ft_putnbr(w);
+	//dprintf(2, "||||||||||w%d|||||||||", w);
+	ft_putchar(' ');
+	ft_putnbr(h);
+	//dprintf(2, "||||||||||h%d|||||||||", h);
+	//dprintf(2, "||||||||||h%d|||||||||", rating);
+	ft_putchar('\n');
+	h = 0;
+	w = 0;
+	rating = 0;
 }

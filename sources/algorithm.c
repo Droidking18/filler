@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/16 16:52:39 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 12:41:02 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,19 @@ void		ft_checkclosest(t_filler *moves, t_map map, int x)
 	j = 0;
 	while (moves)
 	{
+		moves->rating = 1000000;
 		while(map.map[i][j])
 		{
 			if (map.map[i][j] != 'Y' && map.map[i][j] != '.')
 			{
+				//(dprintf(2, "NUMBERLOL<<<<%d>>>>>>", distance_calc(i, j, moves->h, moves->w)));
+				//(dprintf(2, "RATING<<<<%d>>>>>>", moves->rating));
 				if (moves->rating > distance_calc(i, j, moves->h, moves->w))
+				{
+					//write(2, "loop", 4);
 					moves->rating = distance_calc(i, j, moves->h, moves->w);
+				}
 				j++;
-				(dprintf(2, "<<<<%d>>>>>>", distance_calc(i, j, moves->h, moves->w)));
 			}
 			else
 				j++;
@@ -92,8 +97,8 @@ void		ft_checkclosest(t_filler *moves, t_map map, int x)
 		}
 		i = 0;
 		j = 0;
+		//(dprintf(2, "\n\n\n...............RATING<<<<%d>>>>>>\n\n\n", moves->rating));
 		moves = moves->next;
-		write(2, "hi", 2);
 	}
 }
 
@@ -103,8 +108,9 @@ int		compare(int piece)
 	t_map map;
 	t_token token;
 	t_filler *moves;
-	t_filler *tmp;
+	//t_filler *tmp;
 
+	moves = NULL;
 	map = read_map(piece);
 	if (map.geff == 1)
 		return (1);
@@ -116,18 +122,16 @@ int		compare(int piece)
 		while (coords.j <= (map.w - token.w))
 		{
 			if (star_check(&token, map.map, coords.i, coords.j)  == 1)
+			{
 				ft_lstaddto(&moves, coords.i, coords.j);
+			}
 			coords.j++;
 		}
 		coords.i++;
 	}
-	tmp = moves;
-	dprintf(2, "\n\n\n%d          %d          %d\n\n\n", moves->h, moves->w, moves->rating);
-	while (tmp)
-	{
-		ft_checkclosest(tmp, map, map.h);
-		tmp = tmp->next;
-	}
-	dprintf(2, "\n\n\n%d          %d          %d\n\n\n", moves->h, moves->w, moves->rating);
+	if (moves == NULL)
+		return(1);
+	ft_checkclosest(moves, map, map.h);
+	print_optim(moves);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/16 16:47:21 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 11:35:05 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ t_token			read_token();
 int				read_piece();
 int				compare();
 int				distance_calc(int ha, int wa, int hb, int wb);
-float				sqroot(int a, int b);
+void			print_optim(t_filler *moves);
 
 #endif
