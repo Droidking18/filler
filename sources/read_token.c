@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/12 15:00:09 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 13:40:51 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/filler.h"
 #include <stdio.h>
 
-t_token		read_head_token()
+t_token		read_head_token(void)
 {
 	char	*line;
 	int		i;
@@ -32,7 +32,7 @@ t_token		read_head_token()
 	return (ret);
 }
 
-t_token		read_token()
+t_token		read_token(void)
 {
 	char		**ret;
 	int			i;
@@ -41,7 +41,7 @@ t_token		read_token()
 	i = 0;
 	res = read_head_token();
 	ret = (char **)malloc(sizeof(char**) * res.h + 1);
-	while(i < res.h)
+	while (i < res.h)
 	{
 		get_next_line(0, &ret[i]);
 		ret[i][ft_strlen(ret[i])] = 0;
@@ -49,6 +49,6 @@ t_token		read_token()
 	}
 	ret[i] = NULL;
 	i = 0;
-	res.token = ret;	
+	res.token = ret;
 	return (res);
 }

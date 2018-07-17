@@ -6,14 +6,14 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 12:41:02 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 13:42:58 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 #include <stdio.h>
 
-int		star_check(t_token *token, char **map, int x, int y)
+int			star_check(t_token *token, char **map, int x, int y)
 {
 	int i;
 	int j;
@@ -39,7 +39,7 @@ int		star_check(t_token *token, char **map, int x, int y)
 	return (k);
 }
 
-void	ft_fuck_off(int i, int j)
+void		ft_fuck_off(int i, int j)
 {
 	ft_putnbr(i);
 	ft_putchar(' ');
@@ -47,7 +47,7 @@ void	ft_fuck_off(int i, int j)
 	ft_putchar('\n');
 }
 
-void	ft_lstaddto(t_filler **head, int i, int j)
+void		ft_lstaddto(t_filler **head, int i, int j)
 {
 	t_filler *node;
 
@@ -64,51 +64,39 @@ void	ft_lstaddto(t_filler **head, int i, int j)
 
 void		ft_checkclosest(t_filler *moves, t_map map, int x)
 {
-	int i;
-	int j;
+	t_savespace o;
 
-	i = 0;
-	j = 0;
+	o.i = 0;
+	o.j = 0;
 	while (moves)
 	{
 		moves->rating = 1000000;
-		while(map.map[i][j])
+		while (map.map[o.i][o.j])
 		{
-			if (map.map[i][j] != 'Y' && map.map[i][j] != '.')
+			if (map.map[o.i][o.j] != 'Y' && map.map[o.i][o.j] != '.')
+				if (moves->rating > distance_calc(o.i, o.j, moves->h, moves->w))
+					moves->rating = distance_calc(o.i, o.j, moves->h, moves->w);
+			o.j++;
+			if (!map.map[o.i][o.j + 1])
 			{
-				//(dprintf(2, "NUMBERLOL<<<<%d>>>>>>", distance_calc(i, j, moves->h, moves->w)));
-				//(dprintf(2, "RATING<<<<%d>>>>>>", moves->rating));
-				if (moves->rating > distance_calc(i, j, moves->h, moves->w))
-				{
-					//write(2, "loop", 4);
-					moves->rating = distance_calc(i, j, moves->h, moves->w);
-				}
-				j++;
+				o.j = 0;
+				o.i++;
 			}
-			else
-				j++;
-			if (!map.map[i][j + 1])
-			{
-				j = 0;
-				i++;
-			}
-			if (i == x)
-				break;
+			if (o.i == x)
+				break ;
 		}
-		i = 0;
-		j = 0;
-		//(dprintf(2, "\n\n\n...............RATING<<<<%d>>>>>>\n\n\n", moves->rating));
+		o.i = 0;
+		o.j = 0;
 		moves = moves->next;
 	}
 }
 
-int		compare(int piece)
+int			compare(int piece)
 {
-	t_savespace coords;
-	t_map map;
-	t_token token;
-	t_filler *moves;
-	//t_filler *tmp;
+	t_savespace	coords;
+	t_map		map;
+	t_token		token;
+	t_filler	*moves;
 
 	moves = NULL;
 	map = read_map(piece);
@@ -121,16 +109,14 @@ int		compare(int piece)
 		coords.j = 0;
 		while (coords.j <= (map.w - token.w))
 		{
-			if (star_check(&token, map.map, coords.i, coords.j)  == 1)
-			{
+			if (star_check(&token, map.map, coords.i, coords.j) == 1)
 				ft_lstaddto(&moves, coords.i, coords.j);
-			}
 			coords.j++;
 		}
 		coords.i++;
 	}
 	if (moves == NULL)
-		return(1);
+		return (1);
 	ft_checkclosest(moves, map, map.h);
 	print_optim(moves);
 	return (0);

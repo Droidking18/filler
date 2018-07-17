@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 14:25:18 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 11:37:01 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 13:33:13 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		main(int ac, char **av)
 	int geff;
 
 	geff = 0;
-	i =	read_piece();
+	i = read_piece();
 	while (!geff)
 		geff = (compare(i));
 }
