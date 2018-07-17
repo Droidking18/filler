@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 13:42:58 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 16:33:58 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		ft_checkclosest(t_filler *moves, t_map map, int x)
 		moves->rating = 1000000;
 		while (map.map[o.i][o.j])
 		{
-			if (map.map[o.i][o.j] != 'Y' && map.map[o.i][o.j] != '.')
+			if (map.map[o.i][o.j] != 'Y' && map.map[o.i][o.j] != '.' && map.map[o.i][o.j])
 				if (moves->rating > distance_calc(o.i, o.j, moves->h, moves->w))
 					moves->rating = distance_calc(o.i, o.j, moves->h, moves->w);
 			o.j++;

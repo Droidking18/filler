@@ -6,12 +6,13 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 13:28:41 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 13:45:04 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 16:31:37 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../includes/filler.h"
+#include <stdio.h>
 
 t_map		read_head_map(void)
 {
@@ -80,7 +81,12 @@ t_map		read_map(int piece)
 	}
 	ret[i] = NULL;
 	converter(ret, piece, coords.h);
-	coords.map = ret;
 	i = 0;
+	while (ret[i])
+	{
+		dprintf(2, ">>>>>>>>>>>>>>>>>>>%s\n", ret[i]);
+		i++;
+	}
+	coords.map = ret;
 	return (coords);
 }

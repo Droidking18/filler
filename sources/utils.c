@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 15:31:34 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 13:27:37 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/17 16:21:16 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	print_optim(t_filler *moves)
 	w = moves->w;
 	while (moves)
 	{
+		dprintf(2, ">>>>>>>>>>>>>>>>>>>:rating:%d  coords(%d, %d)\n", moves->rating, moves->w, moves->h);
 		if (rating > moves->rating)
 		{
 			rating = moves->rating;
