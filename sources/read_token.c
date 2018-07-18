@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 16:49:36 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 17:22:50 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ t_token		get_firsts(t_token res)
 		dprintf(2, "\n");
 		i++;
 	}
-//	dprintf(2, "\n\n\nIN PREV FUNC:: %d    %d\n\n\n", star.first_w, star.first_h);
 	return (star);
 }
 
@@ -81,6 +80,5 @@ t_token		read_token(void)
 	i = 0;
 	res.token = ret;
 	res = get_firsts(res);
-//	dprintf(2, "\n\n\n%d    %d\n\n\n", res.first_w, res.first_h);
 	return (res);
 }

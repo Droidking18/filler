@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 15:31:34 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 16:49:47 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 17:23:46 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int		distance_calc(int ha, int wa, int hb, int wb)
 {
-	//dprintf(2, "\nComparing: %d and %d with %d and %d\n\n", wa, ha, wb, hb);
 	return ((((ha - wb) * (ha - wb)) + ((wa - hb) * (wa - hb))));
 }
 
@@ -36,7 +35,6 @@ void	print_optim(t_filler *moves)
 			w = moves->w;
 			h = moves->h;
 		}
-		//dprintf(2, "\n\n\nRating:%d FOR COORDS %d and %d\n\n\n", moves->rating, moves->w, moves->h);
 		moves = moves->next;
 	}
 	ft_putnbr(w);
