@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 16:33:58 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 16:49:19 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ int			star_check(t_token *token, char **map, int x, int y)
 	return (k);
 }
 
-void		ft_fuck_off(int i, int j)
-{
-	ft_putnbr(i);
-	ft_putchar(' ');
-	ft_putnbr(j);
-	ft_putchar('\n');
-}
-
 void		ft_lstaddto(t_filler **head, int i, int j)
 {
 	t_filler *node;
@@ -62,19 +54,19 @@ void		ft_lstaddto(t_filler **head, int i, int j)
 	return ;
 }
 
-void		ft_checkclosest(t_filler *moves, t_map map, int x)
+void		ft_checkclosest(t_filler *moves, t_map map, int x, t_token t)
 {
 	t_savespace o;
 
-	o.i = 0;
-	o.j = 0;
+	o.i = t.first_w;
+	o.j = t.first_h;
 	while (moves)
 	{
 		moves->rating = 1000000;
 		while (map.map[o.i][o.j])
 		{
 			if (map.map[o.i][o.j] != 'Y' && map.map[o.i][o.j] != '.' && map.map[o.i][o.j])
-				if (moves->rating > distance_calc(o.i, o.j, moves->h, moves->w))
+				if (moves->rating > distance_calc(o.i, o.j, moves->h , moves->w))
 					moves->rating = distance_calc(o.i, o.j, moves->h, moves->w);
 			o.j++;
 			if (!map.map[o.i][o.j + 1])
@@ -117,7 +109,7 @@ int			compare(int piece)
 	}
 	if (moves == NULL)
 		return (1);
-	ft_checkclosest(moves, map, map.h);
+	ft_checkclosest(moves, map, map.h, token);
 	print_optim(moves);
 	return (0);
 }

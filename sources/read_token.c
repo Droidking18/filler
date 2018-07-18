@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 13:40:51 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 16:49:36 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,36 @@ t_token		read_head_token(void)
 	return (ret);
 }
 
+t_token		get_firsts(t_token res)
+{
+	int			i;
+	int			j;
+	t_token 	star;
+
+	i = 0;
+	star.w = res.w;
+	star.h = res.h;
+	star.token = res.token;
+	while (i < star.h)
+	{
+		j = 0;
+		while (j < star.w)
+		{
+			if (star.token[i][j] == '*')
+			{
+				star.first_w = i;
+				star.first_h = j;
+			}
+			j++;
+		}
+		dprintf(2, "\n");
+		i++;
+	}
+//	dprintf(2, "\n\n\nIN PREV FUNC:: %d    %d\n\n\n", star.first_w, star.first_h);
+	return (star);
+}
+
+
 t_token		read_token(void)
 {
 	char		**ret;
@@ -50,5 +80,7 @@ t_token		read_token(void)
 	ret[i] = NULL;
 	i = 0;
 	res.token = ret;
+	res = get_firsts(res);
+//	dprintf(2, "\n\n\n%d    %d\n\n\n", res.first_w, res.first_h);
 	return (res);
 }

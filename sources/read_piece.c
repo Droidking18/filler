@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 10:39:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 16:00:16 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 17:05:55 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@
 int		read_piece(void)
 {
 	char	*str;
-	int		i;
+	int		j;
 
+	j = 0;
 	get_next_line(0, &str);
-	i = (ft_strcmp(str, "$$$ exec p1 : [./filler]") ? 1 : 0);
+	while (str[j])
+	{
+		if (str[j] == '2')
+			return (1);
+		else if (str[j] == '1')
+			return (0);
+		j++;
+	}
 	free(str);
-	return (i);
+	return (0);
 }

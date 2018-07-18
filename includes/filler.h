@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 11:35:05 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 12:40:16 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct	s_token
 {
 	int		w;
 	int		h;
+	int		first_w;
+	int		first_h;
 	char	**token;
 }				t_token;
 typedef struct	s_savespace

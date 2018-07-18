@@ -1,1 +1,1 @@
-./filler_vm -f maps/map02 -p2 ./filler -p1 players/abanlin.filler
+./filler_vm -f maps/map02 -p1 ./filler -p2 players/abanlin.filler

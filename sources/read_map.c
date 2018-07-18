@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 13:28:41 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/17 16:31:37 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 14:32:57 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,6 @@ t_map		read_map(int piece)
 	}
 	ret[i] = NULL;
 	converter(ret, piece, coords.h);
-	i = 0;
-	while (ret[i])
-	{
-		dprintf(2, ">>>>>>>>>>>>>>>>>>>%s\n", ret[i]);
-		i++;
-	}
 	coords.map = ret;
 	return (coords);
 }
