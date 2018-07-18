@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 17:23:15 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/18 17:25:25 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void		ft_checkclosest(t_filler *moves, t_map map, int x, t_token t)
 {
 	t_savespace o;
 
-	o.i = t.first_w;
-	o.j = t.first_h;
+	o.i = 0;
+	o.j = 0;
 	while (moves)
 	{
 		moves->rating = 1000000;
