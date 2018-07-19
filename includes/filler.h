@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 12:47:47 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 12:40:16 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 10:37:35 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ typedef struct	s_savespace
 	int		j;
 	int		i;
 }				t_savespace;
+typedef struct	s_savelines
+{
+	t_map			map;
+	t_filler		moves;
+	t_token			token;
+	t_savespace		coords;
+}				t_savelines;
 t_map			read_map();
 t_token			read_token();
 int				read_piece();

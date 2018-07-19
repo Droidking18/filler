@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 17:22:50 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 10:05:03 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_token		get_firsts(t_token res)
 {
 	int			i;
 	int			j;
-	t_token 	star;
+	t_token		star;
 
 	i = 0;
 	star.w = res.w;
@@ -59,7 +59,6 @@ t_token		get_firsts(t_token res)
 	}
 	return (star);
 }
-
 
 t_token		read_token(void)
 {

@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 17:25:25 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 10:45:38 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,21 @@ void		ft_lstaddto(t_filler **head, int i, int j)
 	return ;
 }
 
-void		ft_checkclosest(t_filler *moves, t_map map, int x, t_token t)
+void		ft_checkclosest(t_filler *m, t_map map, int x, t_token t)
 {
 	t_savespace o;
 
-	o.i = 0;
-	o.j = 0;
-	while (moves)
+	while (m)
 	{
-		moves->rating = 1000000;
+		o.i = t.first_w;
+		o.j = t.first_h;
+		m->rating = 1000000;
 		while (map.map[o.i][o.j])
 		{
-			if (map.map[o.i][o.j] != 'Y' && map.map[o.i][o.j] != '.' && map.map[o.i][o.j])
-				if (moves->rating > distance_calc(o.i, o.j, moves->h , moves->w))
-					moves->rating = distance_calc(o.i, o.j, moves->h, moves->w);
+			if (map.map[o.i][o.j] != 'Y' && map.map[o.i][o.j] != '.'
+					&& map.map[o.i][o.j])
+				if (m->rating > distance_calc(o.i, o.j, m->h, m->w))
+					m->rating = distance_calc(o.i, o.j, m->h, m->w);
 			o.j++;
 			if (!map.map[o.i][o.j + 1])
 			{
@@ -77,39 +78,35 @@ void		ft_checkclosest(t_filler *moves, t_map map, int x, t_token t)
 			if (o.i == x)
 				break ;
 		}
-		o.i = 0;
-		o.j = 0;
-		moves = moves->next;
+		m = m->next;
 	}
 }
 
 int			compare(int piece)
 {
-	t_savespace	coords;
-	t_map		map;
-	t_token		token;
-	t_filler	*moves;
+	t_filler		*moves;
+	t_savelines		a;
 
 	moves = NULL;
-	map = read_map(piece);
-	if (map.geff == 1)
+	a.map = read_map(piece);
+	if (a.map.geff == 1)
 		return (1);
-	token = read_token();
-	coords.i = 0;
-	while (coords.i <= (map.h - token.h))
+	a.token = read_token();
+	a.coords.i = 0;
+	while (a.coords.i <= (a.map.h - a.token.h))
 	{
-		coords.j = 0;
-		while (coords.j <= (map.w - token.w))
+		a.coords.j = 0;
+		while (a.coords.j <= (a.map.w - a.token.w))
 		{
-			if (star_check(&token, map.map, coords.i, coords.j) == 1)
-				ft_lstaddto(&moves, coords.i, coords.j);
-			coords.j++;
+			if (star_check(&a.token, a.map.map, a.coords.i, a.coords.j) == 1)
+				ft_lstaddto(&moves, a.coords.i, a.coords.j);
+			a.coords.j++;
 		}
-		coords.i++;
+		a.coords.i++;
 	}
 	if (moves == NULL)
 		return (1);
-	ft_checkclosest(moves, map, map.h, token);
+	ft_checkclosest(moves, a.map, a.map.h, a.token);
 	print_optim(moves);
 	return (0);
 }
