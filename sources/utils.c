@@ -6,11 +6,10 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/16 15:31:34 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 17:23:46 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 11:09:07 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/filler.h"
 
 int		distance_calc(int ha, int wa, int hb, int wb)

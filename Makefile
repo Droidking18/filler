@@ -6,7 +6,7 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 08:35:13 by dkaplan           #+#    #+#              #
-#    Updated: 2018/07/19 10:59:24 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/07/19 14:30:56 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ $(NAME):
 	gcc -Wall -Werror -Wextra $(SOURCES) $(INCLUDES) -o $(NAME)
 
 all: $(NAME)
+
+clean:
+	rm -f $(NAME)
 
 fclean: clean
 	rm -f $(NAME)

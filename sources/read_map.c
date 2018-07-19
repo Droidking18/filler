@@ -6,13 +6,12 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/17 13:28:41 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/19 09:54:34 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 11:08:19 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../includes/filler.h"
-#include <stdio.h>
 
 t_map		read_head_map(void)
 {

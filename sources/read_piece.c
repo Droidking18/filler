@@ -6,13 +6,12 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/25 10:39:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/18 17:23:25 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 11:08:49 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../includes/filler.h"
-#include <stdio.h>
 
 int		read_piece(void)
 {

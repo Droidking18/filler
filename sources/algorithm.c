@@ -6,12 +6,11 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 11:42:28 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/19 10:45:38 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 11:07:47 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
-#include <stdio.h>
 
 int			star_check(t_token *token, char **map, int x, int y)
 {
