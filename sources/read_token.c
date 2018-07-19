@@ -6,7 +6,7 @@
 /*   By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 16:03:16 by dkaplan           #+#    #+#             */
-/*   Updated: 2018/07/19 11:08:41 by dkaplan          ###   ########.fr       */
+/*   Updated: 2018/07/19 14:54:19 by dkaplan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,8 @@
 t_token		read_head_token(void)
 {
 	char	*line;
-	int		i;
-	int		j;
 	t_token	ret;
 
-	i = 6;
-	j = 0;
 	get_next_line(0, &line);
 	ret.h = ft_atoi(line + 6);
 	if (ret.h > 9)
