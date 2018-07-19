@@ -6,7 +6,7 @@
 #    By: dkaplan <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/15 08:35:13 by dkaplan           #+#    #+#              #
-#    Updated: 2018/07/19 14:30:56 by dkaplan          ###   ########.fr        #
+#    Updated: 2018/07/19 14:42:19 by dkaplan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SOURCES = sources/algorithm.c sources/main.c sources/read_map.c \
 INCLUDES = libft/libft.a
 
 $(NAME):
+	make -C libft
 	gcc -Wall -Werror -Wextra $(SOURCES) $(INCLUDES) -o $(NAME)
 
 all: $(NAME)
